@@ -47,7 +47,7 @@ const products = [
    "Maple Syrup"
 ];
 
-function displayProducts(productList, products) {
+function display(productList, products) {
    productList.innerHTML = '';
 
    for (let i = 0; i < products.length; i++) {
@@ -63,27 +63,17 @@ function searchProducts(query, products) {
    );
 }
 
-const searchInput = document.getElementById('searchQuery');
-const productList = document.getElementById('products');
-searchInput.addEventListener('input', function () {
-   const query = searchInput.value;
+const searchQuery = document.getElementById('searchQuery');
+const product = document.getElementById('products');
+
+for (let i = 0; i < products.length; i++) {
+   searchQuery.addEventListener('keyup', function () {
+   const query = searchQuery.value;
    const filteredProducts = searchProducts(query, products);
-   displayProducts(productList, filteredProducts);
-});
+   display(product, filteredProducts);
+})};
 
-displayProducts(productList, products);
+display(product, products);
 
-
-function searchProducts(){
-   let list = document.querySelectorAll('.list');
-   let searchQuery = document.getElementById("filter-search").value;
-   for (var i = 0; i < products.length; i++){
-       if (list[i].innerText.toLowerCase()
-       .includes(searchQuery.toLowerCase())){
-           list[i].classList.remove("is-hidden");
-       } else {
-           list[i].classList.add("is-hidden");
-       }
-   }}
 
 
